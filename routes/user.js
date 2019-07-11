@@ -3,20 +3,14 @@ const router = express.Router();
 const User = require("../models/user");
 
 
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-// router.put('/',  (req, res, next) => {
-//   const { name } = req.body;
-//   User.find({ name })
-//   .then((data)=>{
-//     res.json(data).status(200);
-//   })
-//   .catch(next);
-// });
+router.get('/', (req, res, next) => {
+  User.find({})
+  .then((name)=>{
+    console.log('backend', name)
+    res.json(name).status(200)
+  })
+  .catch(next)
+})
 
 router.post('/create', (req, res, next) => {
   const { name } = req.body;
